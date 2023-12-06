@@ -1,0 +1,76 @@
+ALGORITHM somme_element_distinct
+VAR
+    T1, T2: ARRAY_OF INTEGER[];
+    i,j : INTEGER := 1;
+    sum, sum1, sum2 : INTEGER := 0;
+BEGIN
+    T1 := [3, 1, 7, 9];
+    T2 := [2, 4, 1, 9, 3];
+
+    FOR i FROM 1 TO T1.length STEP 1  DO
+        FOR j FROM 1 TO T2.length STEP 1  DO
+            IF (T1[i] = T2[j]) THEN
+                Sum = Sum + T1[i] + T2[j]
+            END_IF
+        END_FOR
+    END_FOR
+    Write ("la somme est :", sum);
+
+    FOR i FROM 0 TO T1.length STEP 1  DO
+    Sum1 = Sum1 + T1[i];
+    END_FOR
+
+    FOR i FROM 0 TO T2.length STEP 1  DO
+    Sum1 = Sum1 + T2[j];
+    END_FOR
+
+    Sum2 = Sum1 - Sum;
+
+    Write ("la somme est :", sum2);
+END
+
+
+ALGORITHM somme_element_distinct2
+VAR
+    T1, T2: ARRAY_OF INTEGER[];
+    i,j : INTEGER := 1;
+    sum : INTEGER := 0;
+    verif : BOOLEAN := FALSE ;
+BEGIN
+    T1 := [3, 1, 7, 9];
+    T2 := [2, 4, 1, 9, 3];
+
+    FOR i FROM 1 TO T1.length STEP 1  DO
+        FOR j FROM 1 TO T2.length STEP 1  DO
+            IF (T1[i] = T2[j]) THEN
+                verif := TRUE;
+            END_IF
+        END_FOR
+
+        IF ( verif = FALSE) THEN
+            sum := sum + T1[i];
+        END_IF 
+        
+        verif := FALSE;
+
+    END_FOR
+
+    FOR i FROM 1 TO T2.length STEP 1  DO
+        FOR j FROM 1 TO T1.length STEP 1  DO
+            IF (T2[i] = T1[j]) THEN
+                verif := TRUE;
+            END_IF
+        END_FOR
+
+        IF ( verif = FALSE) THEN
+            sum := sum + T2[i];
+        END_IF 
+        
+        verif := FALSE;
+
+    END_FOR
+    
+    Write ("la somme est :", sum);
+END
+
+
